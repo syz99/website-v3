@@ -5,7 +5,6 @@ import "./utils";
 
 import { colors, fonts } from "styles/theme.js";
 import "styles/styles.css";
-import "./style.less";
 import { getColor } from "./utils";
 
 interface PublicProps {

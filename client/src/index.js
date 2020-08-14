@@ -18,7 +18,7 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      navBarColor: colors.darkGray,
+      // navBarColor: colors.darkGray,
     };
   }
 
@@ -27,13 +27,22 @@ class App extends React.Component {
       <React.StrictMode>
         <FirebaseContext.Provider value={new Firebase()}>
           <Switch>
-            <div>
-              <NavBar location={window.location.pathname} />
-              <Route exact path="/" component={Home} />
-              <Route path="/members" component={Members} />
-              <Route path="/recruitment" component={Recruitment} />
-              <Route path="/faq" component={Faq} />
-            </div>
+            {
+              /* @todo: replace auth boolean here */ true ? (
+                <div>
+                  <NavBar location={window.location.pathname} />
+                  <Route exact path="/" component={Home} />
+                  <Route path="/members" component={Members} />
+                  <Route path="/recruitment" component={Recruitment} />
+                  <Route path="/faq" component={Faq} />
+                </div>
+              ) : (
+                <div>
+                  <NavBar location={window.location.pathname} />
+                  <Route exact path="/" component={Home} />
+                </div>
+              )
+            }
           </Switch>
         </FirebaseContext.Provider>
       </React.StrictMode>
